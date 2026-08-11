@@ -17,7 +17,9 @@ pipeline {
 
         stage('Infracost Breakdown') {
             steps {
-                sh 'infracost breakdown --path . --format json --out-file infracost-output.json'
+                withCredentials([string(credentialsId: 'infra-cost-api-key', variable: 'INFRACOST_API_KEY')]) {
+                    sh 'infracost breakdown --path . --format json --out-file infracost-output.json'
+                }
             }
         }
 
