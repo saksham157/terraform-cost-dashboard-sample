@@ -25,8 +25,10 @@ pipeline {
 
         stage('Push to Postgres') {
             steps {
-                sh '''
+                sh '''#!/bin/bash
+                    python3 -m venv venv
                     source venv/bin/activate
+                    pip install psycopg2-binary
                     python3 push_cost.py
                 '''
             }
