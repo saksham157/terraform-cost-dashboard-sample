@@ -4,7 +4,12 @@ provider "aws" {
 
 resource "aws_instance" "web" {
   ami           = "ami-0c101f26f147fa7fd"
-  instance_type = "t3.medium"
+  instance_type = "t2.medium"
+}
+
+resource "aws_instance" "backend" {
+  ami           = "ami-0c101f26f147fa7fd"
+  instance_type = "t2.large"
 }
 
 resource "aws_s3_bucket" "assets" {
